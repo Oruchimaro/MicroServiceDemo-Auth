@@ -1,18 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\WebhookController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
 
 Route::controller(AuthController::class)
     ->prefix('auth')
@@ -21,3 +11,9 @@ Route::controller(AuthController::class)
         Route::post('login', 'login')->name('login');
         Route::post('logout', 'logout')->name('logout');
     });
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('webhooks')->name('webhooks')->group(function () {
+        Route::get('', WebhookController::class)->name('validToken');
+    });
+});
