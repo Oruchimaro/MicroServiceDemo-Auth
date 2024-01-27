@@ -31,8 +31,6 @@ class AuthController extends ApiBaseController
     {
         auth()->user()->tokens()->delete();
 
-        return $this->response(
-            'messages.logged_out'
-        );
+        return $this->response(__('messages.logged_out'));
     }
 }
