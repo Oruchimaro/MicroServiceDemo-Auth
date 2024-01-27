@@ -103,6 +103,7 @@ services:
             - sail
 networks:
     sail:
+        name: auth_net
         driver: bridge
 volumes:
     sail-mysql:
