@@ -14,6 +14,8 @@
 
     php artisan migrate --seed
 
+    php artisan passport:install --force
+
     php artisan serve --port=3000
 ```
 
